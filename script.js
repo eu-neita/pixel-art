@@ -17,7 +17,7 @@ const randomColor = () =>{
   return `rgb(${r}, ${g}, ${b})`;
 };
 
-const colorPallete = () => {
+const colorPalletePaint = () => {
   const getColorPallete = document.querySelectorAll('.color');
   getColorPallete[0].style.backgroundColor = 'black';
   for (let i = 1; i < getColorPallete.length; i += 1) {
@@ -28,7 +28,13 @@ const colorPallete = () => {
   }
 };
 
+const generateNewColor = () =>{
+  const capButton = document.querySelector('#button-random-color');
+  capButton.addEventListener('click', colorPalletePaint);
+};
+
 window.onload = () => {
   createDivsPallete();
-  colorPallete();
+  colorPalletePaint();
+  generateNewColor();
 };
