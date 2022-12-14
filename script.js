@@ -29,7 +29,7 @@ const createGrid = () => {
   }
 };
 
-const blankVerify = () =>{
+const blankVerify = () => {
   const getPixel = document.getElementsByClassName('pixel')
   for (let index = 0; index < getPixel.length; index += 1) {
     if (getPixel[index].style.backgroundColor === null) {
@@ -42,10 +42,7 @@ const blankVerify = () =>{
       getPixel[index].style.width = '40px';
     }
   }
-  
-
 };
-
 
 const randomColor = () => {
   const r = Math.floor(Math.random() * 255);
