@@ -10,10 +10,23 @@ const createDivsPallete = () => {
   }
 };
 
-const colorPallete = () =>{
+const randomColor = () =>{
+  const r = Math.floor(Math.random() * 255);
+  const g = Math.floor(Math.random() * 255);
+  const b = Math.floor(Math.random() * 255);
+  return `rgb(${r}, ${g}, ${b})`;
+};
+
+const colorPallete = () => {
   const getColorPallete = document.querySelectorAll('.color');
   getColorPallete[0].style.backgroundColor = 'black';
-}
+  for (let i = 1; i < getColorPallete.length; i += 1) {
+    getColorPallete[i].style.backgroundColor = randomColor();
+    if (randomColor() === 'rgb(0, 0, 0)') {
+      getColorPallete[i].style.backgroundColor = randomColor();
+    }
+  }
+};
 
 window.onload = () => {
   createDivsPallete();
