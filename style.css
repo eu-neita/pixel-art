@@ -16,6 +16,5 @@
     margin-bottom: 21px;
 }
 #pixel-board {
-    border-collapse: collapse;
-    margin: 0 auto;
+    text-align: center;
 }

@@ -12,23 +12,40 @@ const createDivsPallete = () => {
 
 const createGrid = () => {
   const getPixel = document.getElementById('pixel-board');
-  for (let index = 0; index < 5; index += 1) {
-    const pixel = document.createElement('tr');
-    pixel.className = `row${index}`;
-    getPixel.appendChild(pixel);
-    const pixelIn = document.querySelector(`.row${index}`);
-    for (let i = 0; i < 5; i += 1) {
-      const elementPixel = document.createElement('td');
-      pixelIn.appendChild(elementPixel);
-      pixelIn.className = 'pixel';
-      elementPixel.style.border = 'solid 1px black';
-      elementPixel.style.width = '50px';
-      elementPixel.style.height = '50px';
-      elementPixel.style.margin = '0';
-      elementPixel.style.padding = '0';
+  for (let index = 0; index < 5; index +=1) {
+    const line = document.createElement('div')
+    line.className = 'line';
+    for (let index1 = 0; index1 < 5; index1 += 1) {
+      const cell = document.createElement('div');
+      cell.className = 'pixel';
+      line.appendChild(cell);
+      cell.style.border = 'solid 1px black';
+      cell.style.width = '39px';
+      cell.style.height = '39px';
+      cell.style.display = 'inline-block';
+      cell.style.verticalAlign = 'middle';
     }
+    getPixel.appendChild(line);
   }
 };
+
+const blankVerify = () =>{
+  const getPixel = document.getElementsByClassName('pixel')
+  for (let index = 0; index < getPixel.length; index += 1) {
+    if (getPixel[index].style.backgroundColor === null) {
+    } else {
+      getPixel[index].style.backgroundColor = 'white';
+    }
+    if (getPixel[index].style.width === '40px' && getPixel[index].style.height === '40px') {
+    } else {
+      getPixel[index].style.height = '40px';
+      getPixel[index].style.width = '40px';
+    }
+  }
+  
+
+};
+
 
 const randomColor = () => {
   const r = Math.floor(Math.random() * 255);
@@ -80,4 +97,5 @@ window.onload = () => {
   }
   generateNewColor();
   createGrid();
+  blankVerify();
 };
