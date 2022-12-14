@@ -12,8 +12,8 @@ const createDivsPallete = () => {
 
 const createGrid = () => {
   const getPixel = document.getElementById('pixel-board');
-  for (let index = 0; index < 5; index +=1) {
-    const line = document.createElement('div')
+  for (let index = 0; index < 5; index += 1) {
+    const line = document.createElement('div');
     line.className = 'line';
     for (let index1 = 0; index1 < 5; index1 += 1) {
       const cell = document.createElement('div');
@@ -30,7 +30,7 @@ const createGrid = () => {
 };
 
 const blankVerify = () => {
-  const getPixel = document.getElementsByClassName('pixel')
+  const getPixel = document.getElementsByClassName('pixel');
   for (let index = 0; index < getPixel.length; index += 1) {
     if (getPixel[index].style.backgroundColor === null) {
     } else {
@@ -81,6 +81,14 @@ const colorPalletePaintStorage = () => {
   }
 };
 
+const verifyClassColor = () =>{
+  const getColorPallete = document.querySelectorAll('.color');
+  const classVerify = getColorPallete[0].classList.contains('selected');
+  if (classVerify === false) {
+    getColorPallete[0].className += ' selected';
+  }
+};
+
 const generateNewColor = () =>{
   const capButton = document.querySelector('#button-random-color');
   capButton.addEventListener('click', colorPalletePaint);
@@ -96,4 +104,5 @@ window.onload = () => {
   generateNewColor();
   createGrid();
   blankVerify();
+  verifyClassColor();
 };
