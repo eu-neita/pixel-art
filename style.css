@@ -1,4 +1,10 @@
 #title {
-   /* margin: 0 auto; */
     text-align: center;
+}
+#color-palette {
+    display: flex;
+    justify-content: center;
+}
+.color {
+    margin: 5px;
 }
