@@ -74,6 +74,7 @@ const colorPalletePaint = () => {
 
 const colorPalletePaintStorage = () => {
   const getColorPallete = document.querySelectorAll('.color');
+  getColorPallete[0].className += ' selected';
   const getStorageColorPallet = JSON.parse(localStorage.getItem('colorPalette'));
   for (let i = 0; i < getColorPallete.length; i += 1) {
     getColorPallete[i].style.backgroundColor = getStorageColorPallet[i];
