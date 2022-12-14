@@ -17,11 +17,33 @@ const randomColor = () =>{
   return `rgb(${r}, ${g}, ${b})`;
 };
 
+const localstorageColors = () =>{
+  const getCollor = document.querySelectorAll('.color');
+  const storageColors = [];
+  for (let index = 0; index < getCollor.length; index += 1) {
+    storageColors.push(getCollor[index].style.backgroundColor);
+  }
+  localStorage.setItem('colorPalette', JSON.stringify(storageColors));
+};
+
 const colorPalletePaint = () => {
   const getColorPallete = document.querySelectorAll('.color');
   getColorPallete[0].style.backgroundColor = 'black';
   for (let i = 1; i < getColorPallete.length; i += 1) {
     getColorPallete[i].style.backgroundColor = randomColor();
+    if (randomColor() === 'rgb(0, 0, 0)') {
+      getColorPallete[i].style.backgroundColor = randomColor();
+    }
+  }
+  localstorageColors();
+};
+
+const colorPalletePaintStorage = () => {
+  const getColorPallete = document.querySelectorAll('.color');
+  const getStorageColorPallet = JSON.parse(localStorage.getItem('colorPalette'));
+  getColorPallete[0].style.backgroundColor = 'black';
+  for (let i = 1; i < getColorPallete.length; i += 1) {
+    getColorPallete[i].style.backgroundColor = getStorageColorPallet[i];
     if (randomColor() === 'rgb(0, 0, 0)') {
       getColorPallete[i].style.backgroundColor = randomColor();
     }
@@ -35,6 +57,9 @@ const generateNewColor = () =>{
 
 window.onload = () => {
   createDivsPallete();
-  colorPalletePaint();
+  if (localStorage.getItem('colorPalette') === null) {
+    colorPalletePaint();
+  }
   generateNewColor();
+  colorPalletePaintStorage();
 };
