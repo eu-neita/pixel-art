@@ -115,18 +115,27 @@ const verifyClassColor = () =>{
   if (classVerify === false) {
     getColorPallete[0].className += ' selected';
   }
-//   let count = 0;
-//   for (let i = 0; i < getColorPallete.length; i += 1) {
-//     const classVerify2 = getColorPallete[i].classList.contains('selected');
+};
 
-//     if (classVerify2 === true) {
-//       count += 1;
-//     }
-//     if (count >= 2) {
-//       getColorPallete[i].className += ' selected';
-//       count = -1;
-//     }
-//   }
+const storagePixels = () => {
+  const getPixels = document.querySelectorAll('.pixel');
+  let paintPixels = [];
+  for (let index = 0; index < getPixels.length; index += 1) {
+    if (getPixels[index].style.backgroundColor === null || getPixels[index].style.backgroundColor === 'white') {
+      paintPixels.push(getPixels[index].style.backgroundColor = 'white');
+    } else {
+      paintPixels.push(getPixels[index].style.backgroundColor)
+    }
+  }
+  localStorage.setItem('pixelBoard', JSON.stringify(paintPixels));
+};
+
+const colorPixelsPaintStorage = () => {
+  const getPixel = document.querySelectorAll('.pixel');
+  const getStoragePixel = JSON.parse(localStorage.getItem('pixelBoard'));
+  for (let i = 0; i < getPixel.length; i += 1) {
+    getPixel[i].style.backgroundColor = getStoragePixel[i];
+  }
 };
 
 const whenCliked = () => {
@@ -137,9 +146,12 @@ const whenCliked = () => {
   for (let index = 0; index < getPixels.length; index += 1) {
     getPixels[index].addEventListener('click', () => {
       getPixels[index].style.backgroundColor = selectedColors[0];
+      storagePixels();
     });
   }
 };
+
+
 
 const generateNewColor = () => {
   const capButton = document.querySelector('#button-random-color');
@@ -152,6 +164,7 @@ const clearAllButton = () => {
   for (let index = 0; index < getPixels.length; index += 1) {
     getClearButton.addEventListener('click', () => {
       getPixels[index].style.backgroundColor = 'white';
+      storagePixels();
     });
   }
 };
@@ -170,4 +183,5 @@ window.onload = () => {
   colorSelected();
   whenCliked();
   clearAllButton();
+  colorPixelsPaintStorage();
 };
