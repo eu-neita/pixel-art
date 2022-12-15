@@ -87,6 +87,22 @@ const verifyClassColor = () =>{
   if (classVerify === false) {
     getColorPallete[0].className += ' selected';
   }
+//   let count = 0;
+//   for (let i = 0; i < getColorPallete.length; i += 1) {
+//     const classVerify2 = getColorPallete[i].classList.contains('selected');
+
+//     if (classVerify2 === true) {
+//       count += 1;
+//     }
+//     if (count >= 2) {
+//       getColorPallete[i].className += ' selected';
+//       count = -1;
+//     }
+//   }
+};
+
+const whenCliked = () => {
+
 };
 
 const generateNewColor = () =>{
