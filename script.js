@@ -80,18 +80,22 @@ const colorSelected = () => {
     getColorPallete[0].addEventListener('click', () => {
         getColorPallete[i].classList.remove('selected');
         getColorPallete[0].classList.add('selected');
+        whenCliked();
       });
     getColorPallete[1].addEventListener('click', () => {
       getColorPallete[i].classList.remove('selected');
       getColorPallete[1].classList.add('selected');
+      whenCliked();
     });
     getColorPallete[2].addEventListener('click', () => {
       getColorPallete[i].classList.remove('selected');
       getColorPallete[2].classList.add('selected');
+      whenCliked();
     });
     getColorPallete[3].addEventListener('click', () => {
       getColorPallete[i].classList.remove('selected');
       getColorPallete[3].classList.add('selected');
+      whenCliked();
     });
   }
 };
@@ -126,7 +130,16 @@ const verifyClassColor = () =>{
 };
 
 const whenCliked = () => {
-
+  const getColorSelected = document.querySelectorAll('.selected');
+  const getPixels = document.querySelectorAll('.pixel');
+  let selectedColors = [];
+  selectedColors.push(getColorSelected[0].style.backgroundColor);
+  console.log(selectedColors);
+  for (let index = 0; index < getPixels.length; index += 1) {
+    getPixels[index].addEventListener('click', () => {
+      getPixels[index].style.backgroundColor = selectedColors[0];
+    });
+  }
 };
 
 const generateNewColor = () =>{
@@ -146,4 +159,5 @@ window.onload = () => {
   blankVerify();
   verifyClassColor();
   colorSelected();
+  whenCliked();
 };
