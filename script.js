@@ -133,8 +133,10 @@ const storagePixels = () => {
 const colorPixelsPaintStorage = () => {
   const getPixel = document.querySelectorAll('.pixel');
   const getStoragePixel = JSON.parse(localStorage.getItem('pixelBoard'));
-  for (let i = 0; i < getPixel.length; i += 1) {
-    getPixel[i].style.backgroundColor = getStoragePixel[i];
+  if (getStoragePixel !== null) {
+    for (let i = 0; i < getPixel.length; i += 1) {
+      getPixel[i].style.backgroundColor = getStoragePixel[i];
+    }
   }
 };
 
