@@ -58,6 +58,7 @@ const localstorageColors = () => {
     storageColors.push(getCollor[index].style.backgroundColor);
   }
   localStorage.setItem('colorPalette', JSON.stringify(storageColors));
+    colorSelected();
 };
 
 const colorPalletePaint = () => {
@@ -70,6 +71,29 @@ const colorPalletePaint = () => {
     }
   }
   localstorageColors();
+
+};
+
+const colorSelected = () => {
+  const getColorPallete = document.querySelectorAll('.color');
+  for (let i = 0; i < getColorPallete.length; i += 1) {
+    getColorPallete[0].addEventListener('click', () => {
+        getColorPallete[i].classList.remove('selected');
+        getColorPallete[0].classList.add('selected');
+      });
+    getColorPallete[1].addEventListener('click', () => {
+      getColorPallete[i].classList.remove('selected');
+      getColorPallete[1].classList.add('selected');
+    });
+    getColorPallete[2].addEventListener('click', () => {
+      getColorPallete[i].classList.remove('selected');
+      getColorPallete[2].classList.add('selected');
+    });
+    getColorPallete[3].addEventListener('click', () => {
+      getColorPallete[i].classList.remove('selected');
+      getColorPallete[3].classList.add('selected');
+    });
+  }
 };
 
 const colorPalletePaintStorage = () => {
@@ -121,4 +145,5 @@ window.onload = () => {
   createGrid();
   blankVerify();
   verifyClassColor();
+  colorSelected();
 };
