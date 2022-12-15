@@ -21,3 +21,10 @@
 /* .selected{
     border-color: red;
 } */
+#clear-board {
+    margin: 0 auto;
+    display: flex;
+    padding: 5px;
+    margin-top: 21px;
+    margin-bottom: 21px;
+}

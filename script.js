@@ -134,7 +134,6 @@ const whenCliked = () => {
   const getPixels = document.querySelectorAll('.pixel');
   let selectedColors = [];
   selectedColors.push(getColorSelected[0].style.backgroundColor);
-  console.log(selectedColors);
   for (let index = 0; index < getPixels.length; index += 1) {
     getPixels[index].addEventListener('click', () => {
       getPixels[index].style.backgroundColor = selectedColors[0];
@@ -142,9 +141,19 @@ const whenCliked = () => {
   }
 };
 
-const generateNewColor = () =>{
+const generateNewColor = () => {
   const capButton = document.querySelector('#button-random-color');
   capButton.addEventListener('click', colorPalletePaint);
+};
+
+const clearAllButton = () => {
+  const getClearButton= document.querySelector('#clear-board');
+  const getPixels = document.querySelectorAll('.pixel');
+  for (let index = 0; index < getPixels.length; index += 1) {
+    getClearButton.addEventListener('click', () => {
+      getPixels[index].style.backgroundColor = 'white';
+    });
+  }
 };
 
 window.onload = () => {
@@ -160,4 +169,5 @@ window.onload = () => {
   verifyClassColor();
   colorSelected();
   whenCliked();
+  clearAllButton();
 };
